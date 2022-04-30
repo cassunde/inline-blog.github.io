@@ -1,8 +1,70 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-30T16:39:51-03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">INLINESOFT - Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Primeiro passos com HARBOR</title><link href="http://localhost:4000/inline/infra/harbor/2022/04/30/harbor-primeirospassos.html" rel="alternate" type="text/html" title="Primeiro passos com HARBOR" /><published>2022-04-30T13:19:55-03:00</published><updated>2022-04-30T13:19:55-03:00</updated><id>http://localhost:4000/inline/infra/harbor/2022/04/30/harbor-primeirospassos</id><content type="html" xml:base="http://localhost:4000/inline/infra/harbor/2022/04/30/harbor-primeirospassos.html"><![CDATA[<p><strong>Introdução</strong></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-04-30T17:38:24-03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Inline - Blog</title><subtitle>Encontre aqui algumas dicas de como melhorar suas entregas ou como fazer entregas melhores</subtitle><entry><title type="html">Como enviar imagem para Harbor</title><link href="http://localhost:4000/inline/infra/harbor/2022/04/30/como-enviar-imagem-para-harbor.html" rel="alternate" type="text/html" title="Como enviar imagem para Harbor" /><published>2022-04-30T13:19:55-03:00</published><updated>2022-04-30T13:19:55-03:00</updated><id>http://localhost:4000/inline/infra/harbor/2022/04/30/como-enviar-imagem-para-harbor</id><content type="html" xml:base="http://localhost:4000/inline/infra/harbor/2022/04/30/como-enviar-imagem-para-harbor.html"><![CDATA[<p><strong>Introdução</strong></p>
+
+<p><img src="http://localhost:4000/assets/images/harbor.png" alt="titre image" /></p>
 
 <p>Harbor é uma ferramenta simples para armazenar suas imagens docker.</p>
 
+<p>Em nosso exemplo vamos fazer a entrega de site simples, onde o arquivo está dentro da pasta <code class="language-plaintext highlighter-rouge">/dist</code> em qualquer pasta do seu sistema.</p>
+
 <p><strong>Pré Requisitos</strong></p>
 
-<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt update
-</code></pre></div></div>]]></content><author><name></name></author><category term="inline" /><category term="infra" /><category term="harbor" /><summary type="html"><![CDATA[Introdução]]></summary></entry></feed>
+<ol>
+  <li>
+    <p>Sua máquina deve ter o Docker Engine instalado, aqui vocẽ pode ver <a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04-pt">como.</a></p>
+  </li>
+  <li>
+    <p>Sua aplicação deve ter um <a href="https://docs.docker.com/engine/reference/builder/">Dockefile</a> com as configurações necessárias para executar seu container com sucesso.</p>
+  </li>
+</ol>
+
+<p>Por exemplo:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>FROM httpd:2.4
+
+ENV IP_API=192.0.0.1
+
+COPY ./dist/ /usr/local/apache2/htdocs/
+</code></pre></div></div>
+
+<p><strong>Criando sua imagem</strong></p>
+
+<ol>
+  <li>Dentro a pasta do site digite o seguinte comando</li>
+</ol>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>docker build <span class="nt">-t</span> <span class="o">{</span>nome-sua-app<span class="o">}</span>:<span class="o">{</span>versao<span class="o">}</span> <span class="nb">.</span>
+</code></pre></div></div>
+
+<p>por exemplo:</p>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>docker build <span class="nt">-t</span> site-sample:0.0.1 <span class="nb">.</span>
+</code></pre></div></div>
+
+<p><strong>Criando tag</strong></p>
+
+<p>Precisamos criar tag para cada versão da nossa aplicação, podemos usar o seguinte comando:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>docker tag <span class="o">{</span>nome-sua-app<span class="o">}</span>:<span class="o">{</span>versao<span class="o">}</span> <span class="o">{</span>url-registry<span class="o">}</span>/<span class="o">{</span>projeto<span class="o">}</span>/<span class="o">{</span>nome-sua-app<span class="o">}</span>:<span class="o">{</span>versao<span class="o">}</span>
+</code></pre></div></div>
+
+<p>por exemplo:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>docker tag site-sample:0.0.1 registry.inlinesoft.com.br/test/site-sample:0.0.1
+</code></pre></div></div>
+
+<p><strong>Push para repositório</strong></p>
+
+<p>Para enviar uma image para o repositório devemos executar o comando <code class="language-plaintext highlighter-rouge">push</code> seguindo o seguinte template:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>docker push <span class="o">{</span>url-registry<span class="o">}</span>/<span class="o">{</span>projeto<span class="o">}</span>/<span class="o">{</span>nome-sua-app<span class="o">}</span>:<span class="o">{</span>versao<span class="o">}</span>
+</code></pre></div></div>
+
+<p>por exemplo:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>docker push site-sample:0.0.1 registry.inlinesoft.com.br/test/site-sample:0.0.1
+</code></pre></div></div>
+
+<p>Se tiver dado tudo certo, ao acessar seu registry você verá sua imagem disponível.</p>
+
+<p>Agora é só colocar para rodar no seu servidor.</p>]]></content><author><name></name></author><category term="inline" /><category term="infra" /><category term="harbor" /><summary type="html"><![CDATA[Introdução]]></summary></entry><entry><title type="html">Como Jenkins pode enviar imagens para Harbor</title><link href="http://localhost:4000/inline/infra/jenkins/2022/04/30/como-jenkins-pode-subir-para-harbor.html" rel="alternate" type="text/html" title="Como Jenkins pode enviar imagens para Harbor" /><published>2022-04-30T13:19:55-03:00</published><updated>2022-04-30T13:19:55-03:00</updated><id>http://localhost:4000/inline/infra/jenkins/2022/04/30/como-jenkins-pode-subir-para-harbor</id><content type="html" xml:base="http://localhost:4000/inline/infra/jenkins/2022/04/30/como-jenkins-pode-subir-para-harbor.html"><![CDATA[<p><strong>Introdução</strong></p>
+
+<p><strong>Pré Requisitos</strong></p>]]></content><author><name></name></author><category term="inline" /><category term="infra" /><category term="jenkins" /><summary type="html"><![CDATA[Introdução]]></summary></entry></feed>

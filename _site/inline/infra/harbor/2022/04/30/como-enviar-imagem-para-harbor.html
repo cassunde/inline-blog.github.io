@@ -20,7 +20,7 @@
   <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="/inline/infra/harbor/2022/04/30/como-enviar-imagem-para-harbor.html">
+  <link rel="canonical" href="http://localhost:4000/inline/infra/harbor/2022/04/30/como-enviar-imagem-para-harbor.html">
   <link rel="alternate" type="application/rss+xml" title="Inline - Blog" href="/feed.xml">
 
 </head>
@@ -86,20 +86,20 @@
 
         <p><strong>Introdução</strong></p>
 
-<p><img src="/assets/images/harbor.png" alt="titre image" /></p>
+<p><img src="http://localhost:4000/assets/images/harbor.png" alt="titre image" /></p>
 
 <p>Harbor é uma ferramenta simples para armazenar suas imagens docker.</p>
 
-<p>Em nosso exemplo vamos fazer a entrega de site simples, onde o arquivo está dentro da pasta <code class="language-plaintext highlighter-rouge">/dist</code> em qualquer pasta do seu sistema.</p>
+<p>Em nosso exemplo vamos fazer a entrega de um site simples, onde os arquivos estão dentro da pasta <code class="language-plaintext highlighter-rouge">/dist</code></p>
 
 <p><strong>Pré Requisitos</strong></p>
 
 <ol>
   <li>
-    <p>Sua máquina deve ter o Docker Engine instalado, aqui vocẽ pode ver <a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04-pt">como.</a></p>
+    <p>Sua máquina deve ter o Docker instalado, aqui você pode ver <a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04-pt">como.</a></p>
   </li>
   <li>
-    <p>Sua aplicação deve ter um <a href="https://docs.docker.com/engine/reference/builder/">Dockefile</a> com as configurações necessárias para executar seu container com sucesso.</p>
+    <p>Sua aplicação deve ter um <a href="https://docs.docker.com/engine/reference/builder/">Dockerfile</a> com as configurações necessárias para executar seu container com sucesso.</p>
   </li>
 </ol>
 
@@ -153,15 +153,14 @@ COPY ./dist/ /usr/local/apache2/htdocs/
 
 <p>Agora é só colocar para rodar no seu servidor.</p>
 
+<p><img src="https://listmonk.inlinesoft.com.br/home/upload/inline-blog-banner.png" style="cursor: pointer;width: 100%;height: auto;" onclick="window.open(&quot;https://inlinesoft.com.br/treinamentos&quot;, &quot;_blank&quot;).focus()" /></p>
+
 
         <hr>
 
         <div class="clearfix">
 
           
-          
-          <a class="btn btn-primary float-right" href="/inline/infra/jenkins/2022/04/30/como-jenkins-pode-subir-para-harbor.html" data-toggle="tooltip" data-placement="top" title="Como Jenkins pode enviar imagens para  Harbor">Next<span class="d-none d-md-inline">
-              Post</span> &rarr;</a>
           
 
         </div>

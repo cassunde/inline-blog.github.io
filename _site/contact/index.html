@@ -8,7 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
   <title>
-    Inline - Blog
+    Contatos - Inline - Blog
+    
   </title>
 
   <meta name="description" content="Encontre aqui algumas dicas de como melhorar suas entregas ou como fazer entregas melhores">
@@ -19,7 +20,7 @@
   <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
 
   <link rel="stylesheet" href="/assets/main.css">
-  <link rel="canonical" href="http://localhost:4000/">
+  <link rel="canonical" href="http://localhost:4000/contact/">
   <link rel="alternate" type="application/rss+xml" title="Inline - Blog" href="/feed.xml">
 
 </head>
@@ -64,9 +65,7 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="page-heading">
-            <h1>Inline - Blog</h1>
-            
-            <span class="subheading">Encontre aqui algumas dicas de como melhorar suas entregas ou como fazer entregas melhores</span>
+            <h1>Contatos</h1>
             
           </div>
         </div>
@@ -78,40 +77,10 @@
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
 
-        
+        <p>Oferecemos as melhores ferramentas para facilitar o dia-a-dia de sua empresa ou equipe.</p>
 
+<p>Acesse nosso site <a href="https://inlinesoft.com.br">https://inlinesoft.com.br</a></p>
 
-        <!-- Home Post List -->
-        
-
-        <article class="post-preview">
-          <a href="/inline/infra/harbor/2022/04/30/como-enviar-imagem-para-harbor.html">
-            <h2 class="post-title">Como enviar imagem para Harbor</h2>
-            
-            <h3 class="post-subtitle">Introdução
-</h3>
-            
-          </a>
-          <p class="post-meta">Posted by
-            
-            
-            
-            on
-            April 30, 2022 &middot; <span class="reading-time" title="Estimated read time">
-  
-   2 mins  read </span>
-            
-          </p>
-        </article>
-
-        <hr>
-
-        
-
-        <!-- Pager -->
-        <div class="clearfix">
-          <a class="btn btn-primary float-right" href="/posts">View All Posts &rarr;</a>
-        </div>
 
       </div>
     </div>
@@ -156,6 +125,83 @@
 
 <script src="/assets/scripts.js"></script>
 
+
+  <!-- Form Validation -->
+  <script src="/assets/vendor/startbootstrap-clean-blog/js/jqBootstrapValidation.js"></script>
+  <!-- Send Form -->
+  <script>
+    $(function () {
+
+      $("#contactForm input,#contactForm textarea").jqBootstrapValidation({
+        preventSubmit: true,
+        submitError: function ($form, event, errors) {
+          // additional error messages or events
+        },
+        submitSuccess: function ($form, event) {
+          event.preventDefault(); // prevent default submit behaviour
+          // get values from FORM
+          var name = $("input#name").val();
+          var email = $("input#email").val();
+          var phone = $("input#phone").val();
+          var message = $("textarea#message").val();
+          var firstName = name; // For Success/Failure Message
+          // Check for white space in name for Success/Fail message
+          if (firstName.indexOf(' ') >= 0) {
+            firstName = name.split(' ').slice(0, -1).join(' ');
+          }
+          $this = $("#sendMessageButton");
+          $this.prop("disabled", true); // Disable submit button until AJAX call is complete to prevent duplicate messages
+          $.ajax({
+            url: "//formspree.io/atendimento@inlinesoft.com.br",
+            type: "POST",
+            data: {
+              name: name,
+              phone: phone,
+              email: email,
+              message: message
+            },
+            cache: false,
+            success: function () {
+              // Success message
+              $('#success').html("<div class='alert alert-success'>");
+              $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;").append("</button>");
+              $('#success > .alert-success').append("<strong>Your message has been sent. </strong>");
+              $('#success > .alert-success').append('</div>');
+              //clear all fields
+              $('#contactForm').trigger("reset");
+            },
+            error: function () {
+              // Fail message
+              $('#success').html("<div class='alert alert-danger'>");
+              $('#success > .alert-danger').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;").append("</button>");
+              $('#success > .alert-danger').append($("<strong>").text("Sorry " + firstName + ", it seems that my mail server is not responding. Please try again later!"));
+              $('#success > .alert-danger').append('</div>');
+              //clear all fields
+              $('#contactForm').trigger("reset");
+            },
+            complete: function () {
+              setTimeout(function () {
+                $this.prop("disabled", false); // Re-enable submit button when AJAX call is complete
+              }, 1000);
+            }
+          });
+        },
+        filter: function () {
+          return $(this).is(":visible");
+        }
+      });
+
+      $("a[data-toggle=\"tab\"]").click(function (e) {
+        e.preventDefault();
+        $(this).tab("show");
+      });
+    });
+
+    /*When clicking on Full hide fail/success boxes */
+    $('#name').focus(function () {
+      $('#success').html('');
+    });
+  </script>
 
 
 

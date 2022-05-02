@@ -50,6 +50,3 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
-picture:
-  source: "_posts"
-  posts_folders: ":year/:month/:day-:slug/"

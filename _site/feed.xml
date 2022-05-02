@@ -1,19 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-05-01T20:51:55-03:00</updated><id>/feed.xml</id><title type="html">Inline - Blog</title><subtitle>Encontre aqui algumas dicas de como melhorar suas entregas ou como fazer entregas melhores</subtitle><entry><title type="html">Como enviar imagem para Harbor</title><link href="/inline/infra/harbor/2022/04/30/como-enviar-imagem-para-harbor.html" rel="alternate" type="text/html" title="Como enviar imagem para Harbor" /><published>2022-04-30T13:19:55-03:00</published><updated>2022-04-30T13:19:55-03:00</updated><id>/inline/infra/harbor/2022/04/30/como-enviar-imagem-para-harbor</id><content type="html" xml:base="/inline/infra/harbor/2022/04/30/como-enviar-imagem-para-harbor.html"><![CDATA[<p><strong>Introdução</strong></p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2022-05-02T18:26:54-03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Inline - Blog</title><subtitle>Encontre aqui algumas dicas de como melhorar suas entregas ou como fazer entregas melhores</subtitle><entry><title type="html">Como enviar imagem para Harbor</title><link href="http://localhost:4000/inline/infra/harbor/2022/04/30/como-enviar-imagem-para-harbor.html" rel="alternate" type="text/html" title="Como enviar imagem para Harbor" /><published>2022-04-30T13:19:55-03:00</published><updated>2022-04-30T13:19:55-03:00</updated><id>http://localhost:4000/inline/infra/harbor/2022/04/30/como-enviar-imagem-para-harbor</id><content type="html" xml:base="http://localhost:4000/inline/infra/harbor/2022/04/30/como-enviar-imagem-para-harbor.html"><![CDATA[<p><strong>Introdução</strong></p>
 
-<p><img src="/assets/images/harbor.png" alt="titre image" /></p>
+<p><img src="http://localhost:4000/assets/images/harbor.png" alt="titre image" /></p>
 
 <p>Harbor é uma ferramenta simples para armazenar suas imagens docker.</p>
 
-<p>Em nosso exemplo vamos fazer a entrega de site simples, onde o arquivo está dentro da pasta <code class="language-plaintext highlighter-rouge">/dist</code> em qualquer pasta do seu sistema.</p>
+<p>Em nosso exemplo vamos fazer a entrega de um site simples, onde os arquivos estão dentro da pasta <code class="language-plaintext highlighter-rouge">/dist</code></p>
 
 <p><strong>Pré Requisitos</strong></p>
 
 <ol>
   <li>
-    <p>Sua máquina deve ter o Docker Engine instalado, aqui vocẽ pode ver <a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04-pt">como.</a></p>
+    <p>Sua máquina deve ter o Docker instalado, aqui você pode ver <a href="https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04-pt">como.</a></p>
   </li>
   <li>
-    <p>Sua aplicação deve ter um <a href="https://docs.docker.com/engine/reference/builder/">Dockefile</a> com as configurações necessárias para executar seu container com sucesso.</p>
+    <p>Sua aplicação deve ter um <a href="https://docs.docker.com/engine/reference/builder/">Dockerfile</a> com as configurações necessárias para executar seu container com sucesso.</p>
   </li>
 </ol>
 
@@ -65,6 +65,6 @@ COPY ./dist/ /usr/local/apache2/htdocs/
 
 <p>Se tiver dado tudo certo, ao acessar seu registry você verá sua imagem disponível.</p>
 
-<p>Agora é só colocar para rodar no seu servidor.</p>]]></content><author><name></name></author><category term="inline" /><category term="infra" /><category term="harbor" /><summary type="html"><![CDATA[Introdução]]></summary></entry><entry><title type="html">Como Jenkins pode enviar imagens para Harbor</title><link href="/inline/infra/jenkins/2022/04/30/como-jenkins-pode-subir-para-harbor.html" rel="alternate" type="text/html" title="Como Jenkins pode enviar imagens para Harbor" /><published>2022-04-30T13:19:55-03:00</published><updated>2022-04-30T13:19:55-03:00</updated><id>/inline/infra/jenkins/2022/04/30/como-jenkins-pode-subir-para-harbor</id><content type="html" xml:base="/inline/infra/jenkins/2022/04/30/como-jenkins-pode-subir-para-harbor.html"><![CDATA[<p><strong>Introdução</strong></p>
+<p>Agora é só colocar para rodar no seu servidor.</p>
 
-<p><strong>Pré Requisitos</strong></p>]]></content><author><name></name></author><category term="inline" /><category term="infra" /><category term="jenkins" /><summary type="html"><![CDATA[Introdução]]></summary></entry></feed>
+<p><img src="https://listmonk.inlinesoft.com.br/home/upload/inline-blog-banner.png" style="cursor: pointer;width: 100%;height: auto;" onclick="window.open(&quot;https://inlinesoft.com.br/treinamentos&quot;, &quot;_blank&quot;).focus()" /></p>]]></content><author><name></name></author><category term="inline" /><category term="infra" /><category term="harbor" /><summary type="html"><![CDATA[Introdução]]></summary></entry></feed>
